@@ -1,0 +1,8 @@
+Java Spring boot version : 3.2.5
+Java 21 
+Security integration prevent OWASP TOP 10
+JWT session
+prevent vulnerability 
+CORS , Sqli , bruteforce ,csrf…
+
+
