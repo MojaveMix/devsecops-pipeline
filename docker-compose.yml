@@ -43,6 +43,14 @@ services:
     working_dir: /app
     volumes:
       - maven-repo:/root/.m2
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/todolist?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
     command: sh -c "git clone https://github.com/MojaveMix/devsecops-pipeline.git . && mvn test"
 volumes:
   db-data:
