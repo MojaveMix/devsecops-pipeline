@@ -38,6 +38,15 @@ services:
       - maven-repo:/root/.m2
     working_dir: /app
 
+  test: # ✅ FIX: separate service
+    image: maven:3.9.5-eclipse-temurin-21
+    container_name: myapp-test
+    volumes:
+      - .:/app
+      - maven-repo:/root/.m2
+    working_dir: /app
+    command: mvn test -Dspring.profiles.active=test
+
 volumes:
   db-data:
   maven-repo:
