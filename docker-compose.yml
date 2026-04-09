@@ -43,7 +43,7 @@ services:
     working_dir: /app
     volumes:
       - maven-repo:/root/.m2
-    command: sh -c "git clone https://github.com/MojaveMix/devsecops-pipeline.git  && mvn test"
+    command: sh -c "git clone https://github.com/MojaveMix/devsecops-pipeline.git . && mvn test"
 volumes:
   db-data:
   maven-repo:
