@@ -40,13 +40,10 @@ services:
 
   test:
     image: maven:3.9.5-eclipse-temurin-21
-    container_name: myapp-test
-    user: root
-    volumes:
-      - .:/app
-      - maven-repo:/root/.m2
     working_dir: /app
-    command: mvn test -Dspring.profiles.active=test
+    volumes:
+      - maven-repo:/root/.m2
+    command: sh -c "git clone https://github.com/MojaveMix/devsecops-pipeline.git . && mvn test"
 volumes:
   db-data:
   maven-repo:
