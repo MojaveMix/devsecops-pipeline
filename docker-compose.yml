@@ -20,7 +20,7 @@ services:
       timeout: 5s
       retries: 10
 
-  backend: # ✅ FIX: moved outside db
+  backend:
     build: .
     container_name: myapp-backend
     ports:
@@ -33,6 +33,11 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    volumes:
+      - .:/app
+      - maven-repo:/root/.m2
+    working_dir: /app
 
 volumes:
   db-data:
+  maven-repo:
